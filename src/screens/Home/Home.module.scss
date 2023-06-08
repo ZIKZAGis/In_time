@@ -1,0 +1,14 @@
+@import 'src/variables.scss';
+
+.wrapper {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    max-width: 1366px;
+    margin: 0 auto;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 50px;
+}

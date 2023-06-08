@@ -1,0 +1,11 @@
+@import 'src/variables.scss';
+
+.layout {
+    width: 100%;
+    height: 100vh;
+    background-color: $bg-color;
+    color: $text-color;
+    padding: 50px;
+    box-sizing: border-box;
+    text-align: center;
+  }
