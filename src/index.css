@@ -13,6 +13,10 @@ code {
 }
 
 .wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   max-width: 1024px;
   min-width: 320px;
   margin: 0 auto;
