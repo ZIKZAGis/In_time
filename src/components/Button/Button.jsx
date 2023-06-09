@@ -1,10 +1,10 @@
 import styles from './Button.module.scss'
 
-const Button = () => {
+const Button = ({value, fn}) => {
   return (
-    <div>
-      
-    </div>
+    <button type='button' className={styles.button} onClick={() => fn()}>
+      {value}
+    </button>
   );
 }
 

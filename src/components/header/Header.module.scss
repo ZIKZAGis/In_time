@@ -2,8 +2,44 @@
 
 .wrapper {
     width: 100%;
-    padding: 50px 20px;
+    padding: 0;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     box-sizing: border-box;
+
+    a {
+        text-decoration: none;
+        padding: 20px 10px 20px 0;
+
+        svg {
+            position: relative;
+            color: $text-color;
+            transition: $animation;
+            left: 0;
+        }
+
+        &:hover svg {
+            color: $accent;
+            left: -10px; 
+        }
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 54px;
+        background-color: $text-color;
+        background-image: $accent-gradient;
+        color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    a, div {
+        font-size: 68px;
+    }
+
+    div {
+        padding: 20px 0 20px 10px;
+    }
 }

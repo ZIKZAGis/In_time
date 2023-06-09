@@ -1,4 +1,7 @@
 $bg-color: #202020;
 $text-color: #ffffff;
-$accent: linear-gradient(45deg, #ff5b00, #f6bb00);
+$accent-gradient: linear-gradient(45deg, #ff5b00, #f6bb00);
+$accent: #ff5b00;
 $shadow: 3px 3px 15px rgba(0, 0, 0, 1), -5px -5px 16px rgba(255, 255, 255, 0.33), 6px 6px 36px rgba(0, 0, 0, 0.51);
+$shadow-hover: 8px 8px 20px rgba(0, 0, 0, 1), -2px -2px 10px rgba(255, 255, 255, 0.33), 2px 2px 30px rgba(0, 0, 0, 0.51);
+$animation: all ease 0.3s;
