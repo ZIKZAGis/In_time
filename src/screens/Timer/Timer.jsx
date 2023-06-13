@@ -11,12 +11,12 @@ import {BiReset} from 'react-icons/bi'
 
 
 const Timer = () => {
-  const [timeLeft, setTimeLeft] = useState(7200)
+  const [timeLeft, setTimeLeft] = useState(120)
   const [isCounting, setIsCounting] = useState(false)
 
   const hours = getPadTime(Math.floor(timeLeft / 60 / 60))
-  const minutes = getPadTime(Math.floor(timeLeft / 60));
-  const seconds = getPadTime(timeLeft - minutes * 60)
+  const minutes = getPadTime(Math.floor((timeLeft - (hours * 60 * 60)) / 60))
+  const seconds = getPadTime((timeLeft - minutes * 60) - (hours * 60 * 60))
 
   useEffect(() => {
     const interval = setInterval(() => {
