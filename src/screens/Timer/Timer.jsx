@@ -21,6 +21,7 @@ const Timer = () => {
   const minutes = getPadTime(Math.floor((timeLeft - (hours * 60 * 60)) / 60))
   const seconds = getPadTime((timeLeft - minutes * 60) - (hours * 60 * 60))
 
+
   useEffect(() => {
     const interval = setInterval(() => {
       isCounting && setTimeLeft((timeLeft) => (timeLeft >= 1 ? timeLeft - 1 : 0))
@@ -33,7 +34,7 @@ const Timer = () => {
   }, [timeLeft, isCounting])
 
   useEffect(() => {
-    return setTimeLeft((hour * 60 * 60) + (min * 60) + +sec)
+    return setTimeLeft(((hour * 60 * 60) + (min * 60) + +sec) <= 359999 ? ((hour * 60 * 60) + (min * 60) + +sec) : 359999)
   }, [hour, min, sec])
 
   const handleStart = () => {
@@ -44,7 +45,7 @@ const Timer = () => {
   }
   const handleReset = () => {
     setIsCounting(false)
-    setTimeLeft(2 * 60)
+    setTimeLeft(((hour * 60 * 60) + (min * 60) + +sec) <= 359999 ? ((hour * 60 * 60) + (min * 60) + +sec) : 359999)
   }
 
   return (
@@ -61,18 +62,18 @@ const Timer = () => {
         <div className={styles.setting}>
           <h2>Enter time</h2>
           <div>
-            <input type="number" name="hours" id="hours" placeholder='hour' maxLength={1} onChange={(e) => setHour(e.target.value)}/>
-            <input type="number" name="minutes" id="minutes" placeholder='min' onChange={(e) => setMin(e.target.value)}/>
-            <input type="number" name="seconds" id="seconds" placeholder='sec' onChange={(e) => setSec(e.target.value)}/>
+            <input type="number" name="hours" id="hours" placeholder='hour' onChange={(e) => setHour(e.target.value)} disabled={isCounting ? true : false}/>
+            <input type="number" name="minutes" id="minutes" placeholder='min' onChange={(e) => setMin(e.target.value)} disabled={isCounting ? true : false}/>
+            <input type="number" name="seconds" id="seconds" placeholder='sec' onChange={(e) => setSec(e.target.value)} disabled={isCounting ? true : false}/>
           </div>
         </div>
         <div className={styles.control}>
           {isCounting ? (
             <Button onClick={handlePause} value={<BsPauseFill/>}/>
           ) : (
-            <Button onClick={handleStart} value={<GiPlayButton/>}/>
+            <Button onClick={handleStart} value={<GiPlayButton/>} disabled={timeLeft > 0 ? false : true}/>
           )}
-          <Button onClick={handleReset} value={<BiReset/>}/>
+          <Button onClick={handleReset} value={<BiReset/>} disabled={timeLeft > 0 ? false : true}/>
         </div>
       </div>
     </div>

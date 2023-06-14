@@ -1,6 +1,8 @@
 @import 'src/variables.scss';
 
 .button {
+    position: relative;
+    box-sizing: border-box;
     display: inline-flex;
     align-items: center;
     color: $text-color;
@@ -8,4 +10,19 @@
     padding: 10px 20px;
     background-color: $bg-color;
     cursor: pointer;
+    transition: $animation;
+
+    &:hover {
+        background-color: darken($bg-color, 5);
+        box-shadow: $shadow-hover
+    }
+
+    &:disabled {
+        opacity: 0.6;
+    }
+
+    &:disabled:hover {
+        background-color: initial;
+        box-shadow: initial;
+    }
 }

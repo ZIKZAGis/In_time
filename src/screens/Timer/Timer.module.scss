@@ -28,6 +28,8 @@
 }
 
 .setting {
+    margin-bottom: 30px;
+
     h2 {
         font-weight: 400;
         font-size: 28px;
@@ -36,6 +38,7 @@
     input {
         border: none;
         border-radius: 10px;
+        color: $text-color;
         background-color: darken($bg-color, 3);
         text-align: center;
         font-weight: bold;
@@ -45,10 +48,28 @@
         font-size: 26px;
         margin: 0 10px;
         padding: 5px 10px;
+        transition: $animation;
 
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
             -webkit-appearance: none;
         }
+
+        &:hover {
+            background-color: darken($bg-color, 6);
+        }
+
+        &:disabled {
+            opacity: 0.6;
+        }
+
+        &:disabled:hover {
+            background-color: darken($bg-color, 3)
+        }
     }
+}
+
+.pop_up {
+    display: block;
+
 }
