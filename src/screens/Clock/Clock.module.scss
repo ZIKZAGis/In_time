@@ -8,6 +8,8 @@
 }
 
 .slider_item {
+    display: flex;
+    flex-direction: column;
     position: absolute;
     width: 100%;
     height: 100%;
@@ -28,37 +30,119 @@
     font-weight: bold;
     box-sizing: border-box;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 30px;
+    height: 30px;
     margin: 0 15px;
-    border: 3px solid darken($accent, 10);
+    border: 3px solid darken($bg-color, 3);
     background-color: transparent;
     transition: $animation;
     cursor: pointer;
 
     &:hover {
-        border-color: $accent;
-        background-color: darken($bg-color, 3);
+        border-color: $accent ;
+        background-color: darken($bg-color, 7);
     }
 }
 
 .default_clock {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-
     span {
         line-height: 200px;
         font-size: 200px;
         font-weight: bold;
         color: $accent;
+        text-shadow: 10px 10px 5px darken($bg-color, 4);
     }
 
     div {
+        width: fit-content;
+        padding: 6px 20px;
         font-size: 20px;
-        color: darken($accent, 5);
-        text-shadow: 2px 2px 2px darken($bg-color, 3);
-        margin-top: 20px;
+        color: lighten($bg-color, 20);
+        border: 2px solid lighten($bg-color, 10);
+        border-radius: 10px;
+        margin: 25px auto 0;
+    }
+}
+
+.en_clock {
+    .season,
+    .date {
+        text-transform: uppercase;
+        font-size: 26px;
+        font-weight: bold;
+        color: $text-color;
+        text-shadow: 2px 2px 2px $accent;
+        padding: 60px 150px;
+        line-height: 26px;
+    }
+
+    .season {
+        align-self: flex-start;
+    }
+
+    .date {
+        align-self: flex-end;
+    }
+
+    .time {
+        font-size: 200px;
+        font-weight: bold;
+        color: $text-color;
+        margin-right: -100px;
+        text-shadow: 5px 5px 2px $accent;
+
+        span {
+            margin-left: 10px;
+            font-weight: normal;
+            font-size: 70px;
+            color: $accent;
+            text-shadow: none;
+        }
+    }
+}
+
+.ru_clock {
+    .season {
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        font-size: 50px;
+        line-height: 50px;
+        padding: 20px;
+        margin: 0 auto 20px;
+
+        span {
+            margin-right: 15px;
+        }
+
+        .icon {
+            display: flex;
+        }
+    }
+
+    .date {
+        font-size: 40px;
+        font-weight: bold;
+        margin-bottom: 100px;
+    }
+
+    .time {
+        position: relative;
+        line-height: 200px;
+        font-size: 200px;
+        font-weight: bold;
+        width: fit-content;
+        text-shadow: 10px 10px 5px darken($bg-color, 4);
+        margin: 0 auto;
+        padding: 40px 0;
+
+        span {
+            font-size: 40px;
+            line-height: 40px;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            text-shadow: none;
+        }
     }
 }

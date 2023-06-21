@@ -3,10 +3,14 @@ import Header from '../../components/Header/Header';
 import styles from './Clock.module.scss'
 import {FiClock} from 'react-icons/fi'
 import { getPadTime } from '../../utils/getPadTime';
+import {BsSnow2} from 'react-icons/bs'
+import {SiSpring} from 'react-icons/si'
+import {FaSun, FaCanadianMapleLeaf} from 'react-icons/fa'
+
 
 const titles = {
   ru: {
-    day: ['Вс', 'Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб'],
+    day: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
     season: ['зима', 'весна', 'лето', 'осень'],
     month: ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
   },
@@ -16,6 +20,20 @@ const titles = {
     month: ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
   }
 }
+
+const seasonIcons = [
+  <BsSnow2/>,
+  <SiSpring/>,
+  <FaSun/>,
+  <FaCanadianMapleLeaf/>
+]
+
+const seasonColors = [
+  '#1389e9',
+  '#dbcc17',
+  '#5ad006',
+  '#fd8901'
+]
 
 const Clock = () => {
   const [time, setTime] = useState(new Date())
@@ -65,9 +83,6 @@ const Clock = () => {
     control.childNodes[0].style.backgroundColor = '#ff5b00',
     control.childNodes[1].style.backgroundColor = '#202020',
     control.childNodes[2].style.backgroundColor = '#202020',
-    control.childNodes[0].style.color = '#202020',
-    control.childNodes[1].style.color = '#ffffff',
-    control.childNodes[2].style.color = '#ffffff',
   ]
 
   const setEnClock = () => [
@@ -77,9 +92,6 @@ const Clock = () => {
     control.childNodes[0].style.backgroundColor = '#202020',
     control.childNodes[1].style.backgroundColor = '#ff5b00',
     control.childNodes[2].style.backgroundColor = '#202020',
-    control.childNodes[0].style.color = '#ffffff',
-    control.childNodes[1].style.color = '#202020',
-    control.childNodes[2].style.color = '#ffffff',
   ]
 
   const setDfClock = () => [
@@ -89,26 +101,45 @@ const Clock = () => {
     control.childNodes[0].style.backgroundColor = '#202020',
     control.childNodes[1].style.backgroundColor = '#202020',
     control.childNodes[2].style.backgroundColor = '#ff5b00',
-    control.childNodes[0].style.color = '#ffffff',
-    control.childNodes[1].style.color = '#ffffff',
-    control.childNodes[2].style.color = '#202020',
   ]
 
   return (
     <div className='wrapper'>
       <Header name={`Clock`} icon={<FiClock/>}/>
       <div className={styles.slider} id='slider'>
-        <div className={`${styles.ru_clock} ${styles.slider_item}`} style={{color: 'orange', opacity: '1'}}>
-          <div>Время Года: {titles.ru.season[getSeason()]}</div>
-          <div>День: {titles.ru.day[day]} {date}</div>
-          <div>Месяц: {titles.ru.month[month]}</div>
-          <div>Время: {`${h}:${m}:${s}`}</div>
+
+
+        <div className={`${styles.ru_clock} ${styles.slider_item}`} style={{opacity: '1'}}>
+          <div className={styles.season} style={{color: `${seasonColors[getSeason()]}`}}>
+            <span>
+              {titles.ru.season[getSeason()]}
+            </span>
+            <div className={styles.icon}>
+              {seasonIcons[getSeason()]}    
+            </div>
+          </div>
+          <div className={styles.date}>
+            {`${date} ${titles.ru.month[month]}`}
+          </div>
+          <div className={styles.time}>
+            <span>
+              {titles.ru.day[day]} 
+            </span>
+            <div style={{color: `${seasonColors[getSeason()]}`}}>
+              {`${h}:${m}:${s}`}
+            </div>
+          </div>
         </div>
-        <div className={`${styles.en_clock} ${styles.slider_item}`} style={{color: 'green'}}>
-          <div>Season: {titles.en.season[getSeason()]}</div>
-          <div>Day: {titles.en.day[day]} {date}</div>
-          <div>Month: {titles.en.month[month]}</div>
-          <div>Time: {`${h}:${m}:${s}`}</div>
+
+
+        <div className={`${styles.en_clock} ${styles.slider_item}`}>
+          <div className={styles.season}>{titles.en.season[getSeason()]}</div>
+          <div className={styles.time}>
+            {`${h}:${m}`}<span>:{s}</span>
+          </div>
+          <div className={styles.date}>
+            {`${titles.en.day[day]}, ${date} ${titles.en.month[month]}`}
+          </div>
         </div>
         <div className={`${styles.default_clock} ${styles.slider_item}`}>
           <span>{h}</span>
@@ -119,9 +150,9 @@ const Clock = () => {
         </div>
       </div>
       <div className={styles.control} id='control'>
-        <button className={styles.button} onClick={setRuClock} style={{backgroundColor: '#ff5b00', color: '#202020'}}>1</button>
-        <button className={styles.button} onClick={setEnClock}>2</button>
-        <button className={styles.button} onClick={setDfClock}>3</button>
+        <button className={styles.button} onClick={setRuClock} style={{backgroundColor: '#ff5b00'}}/>
+        <button className={styles.button} onClick={setEnClock}/>
+        <button className={styles.button} onClick={setDfClock}/>
       </div>
     </div>
   );
