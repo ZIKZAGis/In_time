@@ -3,8 +3,7 @@
 .slider {
     position: relative;
     width: 100%;
-    height: 500px;
-    outline: 1px solid red;
+    height: 800px;
     overflow: hidden;
 }
 
@@ -18,21 +17,48 @@
     transition: $animation;
 }
 
-.active {
-    opacity: 1;
+.control {
+    display: flex;
+    margin: 0 auto;
 }
 
 .button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 1;
+    color: $text-color;
+    font-size: 18px;
+    font-weight: bold;
+    box-sizing: border-box;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    margin: 0 15px;
+    border: 3px solid darken($accent, 10);
+    background-color: transparent;
+    transition: $animation;
+    cursor: pointer;
+
+    &:hover {
+        border-color: $accent;
+        background-color: darken($bg-color, 3);
+    }
 }
 
-.prev {
-    left: 10px;
-}
+.default_clock {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 
-.next {
-    right: 10px;
+    span {
+        line-height: 200px;
+        font-size: 200px;
+        font-weight: bold;
+        color: $accent;
+    }
+
+    div {
+        font-size: 20px;
+        color: darken($accent, 5);
+        text-shadow: 2px 2px 2px darken($bg-color, 3);
+        margin-top: 20px;
+    }
 }

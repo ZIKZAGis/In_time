@@ -55,21 +55,50 @@ const Clock = () => {
     return season
   }
 
-  const wrapper = document.querySelector('#wrapper')
+  const slider = document.querySelector('#slider')
+  const control = document.querySelector('#control')
 
-  const next = () => {
-    console.log(wrapper.childNodes[0])
-  }
+  const setRuClock = () => [
+    slider.childNodes[0].style.opacity = '1',
+    slider.childNodes[1].style.opacity = '0',
+    slider.childNodes[2].style.opacity = '0',
+    control.childNodes[0].style.backgroundColor = '#ff5b00',
+    control.childNodes[1].style.backgroundColor = '#202020',
+    control.childNodes[2].style.backgroundColor = '#202020',
+    control.childNodes[0].style.color = '#202020',
+    control.childNodes[1].style.color = '#ffffff',
+    control.childNodes[2].style.color = '#ffffff',
+  ]
 
-  const prev = () => [
-    console.log(wrapper.childNodes[1])
+  const setEnClock = () => [
+    slider.childNodes[0].style.opacity = '0',
+    slider.childNodes[1].style.opacity = '1',
+    slider.childNodes[2].style.opacity = '0',
+    control.childNodes[0].style.backgroundColor = '#202020',
+    control.childNodes[1].style.backgroundColor = '#ff5b00',
+    control.childNodes[2].style.backgroundColor = '#202020',
+    control.childNodes[0].style.color = '#ffffff',
+    control.childNodes[1].style.color = '#202020',
+    control.childNodes[2].style.color = '#ffffff',
+  ]
+
+  const setDfClock = () => [
+    slider.childNodes[0].style.opacity = '0',
+    slider.childNodes[1].style.opacity = '0',
+    slider.childNodes[2].style.opacity = '1',
+    control.childNodes[0].style.backgroundColor = '#202020',
+    control.childNodes[1].style.backgroundColor = '#202020',
+    control.childNodes[2].style.backgroundColor = '#ff5b00',
+    control.childNodes[0].style.color = '#ffffff',
+    control.childNodes[1].style.color = '#ffffff',
+    control.childNodes[2].style.color = '#202020',
   ]
 
   return (
     <div className='wrapper'>
       <Header name={`Clock`} icon={<FiClock/>}/>
-      <div className={styles.slider} id='wrapper'>
-        <div className={`${styles.ru_clock} ${styles.slider_item} ${styles.active}`} style={{color: 'orange'}}>
+      <div className={styles.slider} id='slider'>
+        <div className={`${styles.ru_clock} ${styles.slider_item}`} style={{color: 'orange', opacity: '1'}}>
           <div>Время Года: {titles.ru.season[getSeason()]}</div>
           <div>День: {titles.ru.day[day]} {date}</div>
           <div>Месяц: {titles.ru.month[month]}</div>
@@ -81,12 +110,18 @@ const Clock = () => {
           <div>Month: {titles.en.month[month]}</div>
           <div>Time: {`${h}:${m}:${s}`}</div>
         </div>
-        <div className={`${styles.default_clock} ${styles.slider_item}`} style={{color: 'red'}}>
-          <div>{`${date}.${getPadTime(month + 1)}.${year}`}</div>
-          <div>{`${h}:${m}:${s}`}</div>
+        <div className={`${styles.default_clock} ${styles.slider_item}`}>
+          <span>{h}</span>
+          <div className={styles.default_date}>
+            {`${date}.${getPadTime(month + 1)}.${year}`}
+          </div>
+          <span>{m}</span>
         </div>
-        <button className={`${styles.button} ${styles.next}`} onClick={next}>next</button>
-        <button className={`${styles.button} ${styles.prev}`} onClick={prev}>prev</button>
+      </div>
+      <div className={styles.control} id='control'>
+        <button className={styles.button} onClick={setRuClock} style={{backgroundColor: '#ff5b00', color: '#202020'}}>1</button>
+        <button className={styles.button} onClick={setEnClock}>2</button>
+        <button className={styles.button} onClick={setDfClock}>3</button>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ import {BiReset} from 'react-icons/bi'
 
 
 const Timer = () => {
-  const [timeLeft, setTimeLeft] = useState(120)
+  const [timeLeft, setTimeLeft] = useState(0)
   const [isCounting, setIsCounting] = useState(false)
   const [hour, setHour] = useState('')
   const [min, setMin] = useState('')
