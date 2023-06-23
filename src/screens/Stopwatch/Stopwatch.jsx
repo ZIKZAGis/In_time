@@ -64,7 +64,7 @@ const Stopwatch = () => {
     setLaps([])
   }
 
-  const handleNew = () => setLaps([...laps, `${hours} : ${minutes} : ${seconds} : ${milliSeconds}`])
+  const handleNew = () => setLaps([`${hours} : ${minutes} : ${seconds} : ${milliSeconds}`, ...laps])
   
 
   return (
@@ -80,12 +80,11 @@ const Stopwatch = () => {
           <span>:</span>
           <span>{milliSeconds}</span>
         </div>
-        <div>
+        <div className={styles.mask}>
           <span>RESULT</span>
           <div className={styles.result}>
             {laps.length > 0 && laps.map((lap, index) => (
               <div key={index} className={styles.lap}>
-                <span className={styles.lap_num}>{`#${index + 1}`}</span>
                 {lap}
               </div>
             ))}
