@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+#root {
+  height: 100vh;
+}
+
 .wrapper {
   position: relative;
   display: flex;

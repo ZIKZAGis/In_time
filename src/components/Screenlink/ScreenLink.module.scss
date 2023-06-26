@@ -2,12 +2,15 @@
 
 .link {
     position: relative;
+    display: flex;
     top: 0;
     left: 0;
+    flex-direction: column;
+    justify-content: center;
     border-radius: 50px;
     text-decoration: none;
     color: $text-color;
-    padding: 30px;
+    padding: 20px;
     box-shadow: $shadow;
     transition: $animation;
     background: $bg-color;
@@ -19,13 +22,6 @@
         color: $accent;
         box-shadow: $shadow-hover;
     }
-}
-
-.wrapper {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 }
 
 .icon {
