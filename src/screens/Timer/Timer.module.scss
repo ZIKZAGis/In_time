@@ -70,7 +70,29 @@
     }
 }
 
-.pop_up {
-    display: block;
+@media (max-width: $adaptive) {
+    .timer {
+        width: 80vw;
+        height: 80vw;
+        border-width: 7vw;
+        font-size: 14vw;
+    }
 
+    .control {
+        margin-bottom: 20px;
+    }
+
+    .setting {
+        margin-bottom: 20px;
+
+        h2 {
+            font-size: 8vw;
+        }
+
+        input {
+            width: 20vw;
+            margin: 0 5px;
+        }
+
+    }
 }

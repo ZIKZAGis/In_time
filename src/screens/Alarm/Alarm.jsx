@@ -31,16 +31,12 @@ const Alarm = () => {
           <button type='button' onClick={setAlarmState}>{isAlarmOpen? 'Close' : 'Set'} alarm</button>
         </div>
       </div>
-      <div>
-        <form>
-          {isAlarmOpen && 
-            <div className={styles.alarm_input}>
-              <input type="time" onChange={(e) => setAlarm(e.target.value)}/>
-              <MdAlarmOn/>
-            </div>    
-          }
-        </form>
-      </div>
+      <form className={styles.alarm_form} style={isAlarmOpen ? {opacity: 1} : {opacity: 0}}>
+        <div className={styles.alarm_input}>
+          <input type="time" onChange={(e) => setAlarm(e.target.value)} disabled={isAlarmOpen ? false : true}/>
+          <MdAlarmOn/>
+        </div>
+      </form>
     </div>
   );
 }

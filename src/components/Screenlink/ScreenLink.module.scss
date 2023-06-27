@@ -33,3 +33,34 @@
 .name {
     font-size: 28px;
 }
+
+@media (max-width: $adaptive) {
+    .link {
+        border-radius: 7vw;
+        box-shadow: $shadow-s;
+        padding: 15px;
+        padding-top: 100%;
+
+        &:hover {
+            top: -5px;
+            left: -5px;
+            box-shadow: $shadow-hover-s;
+        }
+    }
+
+    .wrapper {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        height: auto;
+        transform: translate(-50%, -50%);
+    }
+
+    .icon {
+        font-size: 18vw;
+    }
+
+    .name {
+        font-size: 5vw;
+    }
+}

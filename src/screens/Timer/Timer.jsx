@@ -50,7 +50,7 @@ const Timer = () => {
 
   return (
     <div className='wrapper'>
-      <Header name={`Timer`} icon={<CgSandClock/>}/>
+      <Header name={`Timer`} icon={<CgSandClock style={isCounting && {color: '#ff5b00'}}/>}/>
       <div className='wrapper'>
         <div className={styles.timer}>
           <span>{hours}</span>

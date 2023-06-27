@@ -2,6 +2,13 @@ $bg-color: #202020;
 $text-color: #ffffff;
 $accent-gradient: linear-gradient(45deg, #ff5b00, #f6bb00);
 $accent: #ff5b00;
+
 $shadow: 3px 3px 15px rgba(0, 0, 0, 1), -5px -5px 16px rgba(255, 255, 255, 0.33), 6px 6px 36px rgba(0, 0, 0, 0.51);
 $shadow-hover: 8px 8px 20px rgba(0, 0, 0, 1), -2px -2px 10px rgba(255, 255, 255, 0.33), 2px 2px 30px rgba(0, 0, 0, 0.51);
+$shadow-s: 2px 2px 12px rgba(0, 0, 0, 1), -3px -3px 12px rgba(255, 255, 255, 0.33), 4px 4px 25px rgba(0, 0, 0, 0.51);
+$shadow-hover-s: 6px 6px 17px rgba(0, 0, 0, 1), -1px -1px 6px rgba(255, 255, 255, 0.33), 1px 1px 25px rgba(0, 0, 0, 0.51);
+
+
 $animation: all ease 0.3s;
+
+$adaptive: 767px;

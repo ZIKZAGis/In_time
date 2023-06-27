@@ -146,3 +146,79 @@
         }
     }
 }
+
+@media (max-width: $adaptive) {
+    .slider {
+        height: 80vh;
+    }
+
+    .slider_item {
+        justify-content: center;
+    }
+
+    .ru_clock {
+        .season {
+            font-size: 8vw;
+            margin-bottom: 0;
+
+            span {
+                margin-right: 10px;
+            }
+        }
+
+        .date {
+            font-size: 10vw;
+        }
+
+        .time {
+            line-height: 22vw;
+            font-size: 22vw;
+            text-shadow: 1vw 1vw 5px darken($bg-color, 4);
+
+            span {
+                font-size: 6vw;
+                left: 5px;
+            }
+        }
+    }
+
+    .en_clock {
+        .season, .date {
+            font-size: 6vw;
+            line-height: 6vw;
+        }
+
+        .time {
+            font-size: 28vw;
+            margin-right: 0;
+
+            span {
+                font-size: 8vw;
+            }
+        }
+    }
+}
+
+@media (max-width: 920px) {
+    .ru_clock {
+        .time {
+            font-size: 20vw;
+            line-height: 20vw;
+        }
+    }
+
+    .en_clock {
+        .season, .date {
+            padding: 20px 0;
+        }
+
+        .time {
+            font-size: 25vw;
+            margin-right: 0;
+
+            span {
+                font-size: 7vw;
+            }
+        }
+    }
+}
