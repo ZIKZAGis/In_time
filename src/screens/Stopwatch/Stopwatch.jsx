@@ -1,5 +1,5 @@
 import Button from '../../components/Button/Button';
-import Header from '../../components/Header/Header';
+import Header from '../../components/header/Header';
 import styles from './Stopwatch.module.scss'
 import {ImStopwatch} from 'react-icons/im'
 import {RiRefreshLine} from 'react-icons/ri'

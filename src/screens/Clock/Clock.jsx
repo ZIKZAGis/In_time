@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import Header from '../../components/Header/Header';
+import Header from '../../components/header/Header';
 import styles from './Clock.module.scss'
 import {FiClock} from 'react-icons/fi'
 import { getPadTime } from '../../utils/getPadTime';

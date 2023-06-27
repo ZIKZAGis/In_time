@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Header from '../../components/Header/Header';
+import Header from '../../components/header/Header';
 import styles from './Timer.module.scss'
 import {CgSandClock} from 'react-icons/cg'
 import { getPadTime } from '../../utils/getPadTime';
