@@ -7,6 +7,7 @@ import Button from '../../components/Button/Button';
 import {BsPauseFill} from 'react-icons/bs'
 import {GiPlayButton} from 'react-icons/gi'
 import {BiReset} from 'react-icons/bi'
+import TimerRing from './TimerRing';
 
 
 
@@ -52,13 +53,15 @@ const Timer = () => {
     <div className='wrapper'>
       <Header name={`Timer`} icon={<CgSandClock style={isCounting && {color: '#ff5b00'}}/>}/>
       <div className='wrapper'>
-        <div className={styles.timer}>
-          <span>{hours}</span>
-          <span>:</span>
-          <span>{minutes}</span>
-          <span>:</span>
-          <span>{seconds}</span>
-        </div>
+        <TimerRing style={styles}>
+          <div>
+            <span>{hours}</span>
+            <span>:</span>
+            <span>{minutes}</span>
+            <span>:</span>
+            <span>{seconds}</span>
+          </div>
+        </TimerRing>
         <div className={styles.setting}>
           <h2>Enter time</h2>
           <div>
