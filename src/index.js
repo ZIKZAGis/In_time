@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Router from './routes/Routes';
 import './index.css';
-import { RouterProvider } from 'react-router-dom';
-import { router } from './routes/routes';
-import Layout from './components/Layout/Layout';
+import Substrate from './components/Substrate/Substrate';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Layout>
-      <RouterProvider router={router}/>
-    </Layout>
+    <Substrate>
+      <Router/>
+    </Substrate>
   </React.StrictMode>
 );

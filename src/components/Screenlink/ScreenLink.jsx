@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import styles from './ScreenLink.module.scss'
 
 const ScreenLink = ({name, icon}) => {
+    const navigate = useNavigate()
     return (
-        <a className={styles.link} href={`/${name}`}>
-            <div className={styles.wrapper}>
+        <button className={styles.button} onClick={() => navigate(`/${name}`)}>
+            <div>
                 <div className={styles.icon}>
                     {icon}
                 </div>
@@ -11,7 +13,7 @@ const ScreenLink = ({name, icon}) => {
                     {name}
                 </div>
             </div>
-        </a>
+        </button>
     )
 }
 

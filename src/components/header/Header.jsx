@@ -1,12 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './Header.module.scss'
 import {BiArrowBack} from 'react-icons/bi'
 
 const Header = ({name, icon}) => {
+  const navigate = useNavigate()
   return (
     <div className={styles.wrapper}>
-      <a href="/" aria-label='Back link'>
+      <button aria-label='Back link' onClick={() => navigate('/')}>
         <BiArrowBack />
-      </a>
+      </button>
       <h1>
         {name}
       </h1>

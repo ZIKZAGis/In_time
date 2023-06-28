@@ -1,29 +1,28 @@
-import { createBrowserRouter } from 'react-router-dom';
 import Alarm from '../screens/Alarm/Alarm';
 import Home from '../screens/Home/Home';
 import Clock from '../screens/Clock/Clock';
 import Stopwatch from '../screens/Stopwatch/Stopwatch';
 import Timer from '../screens/Timer/Timer';
 
-export const router = createBrowserRouter([
+export const routes = [
     {
         path: '/',
-        element: <Home/>
+        component: Home
     },
     {
         path: '/alarm',
-        element: <Alarm/>
+        component: Alarm
     },
     {
         path: '/clock',
-        element: <Clock/>
+        component: Clock
     },
     {
         path: '/stopwatch',
-        element: <Stopwatch/>
+        component: Stopwatch
     },
     {
         path: '/timer',
-        element: <Timer/>
+        component: Timer
     }
-])
+]

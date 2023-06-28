@@ -8,11 +8,13 @@
     justify-content: space-between;
     box-sizing: border-box;
     margin-bottom: 20px;
-    line-height: 58px;
 
-    a {
-        text-decoration: none;
+    button {
+        border: none;
+        outline: none;
+        background-color: transparent;
         padding: 20px 10px 20px 0;
+        cursor: pointer;
 
         svg {
             position: relative;
@@ -37,7 +39,7 @@
         -webkit-text-fill-color: transparent;
     }
 
-    a, div {
+    button, div {
         font-size: 68px;
     }
 
@@ -50,10 +52,9 @@
     .wrapper {
         h1 {
             font-size: 8vw;
-            line-height: 8vw;
         }
 
-        a {
+        button {
             padding: 10px 5px 5px 0;
         }
 
@@ -61,8 +62,8 @@
             padding: 10px 0 5px 5px;
         }
 
-        a, div {
-            line-height: 10vw;
+        button, div {
+            line-height: 11vw;
             font-size: 10vw;
         }
     }
