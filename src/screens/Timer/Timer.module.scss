@@ -5,7 +5,9 @@
     width: 400px;
     height: 400px;
     margin: 0 auto;
-
+    border-radius: 50%;
+    box-shadow: $shadow;
+    transition: $animation;
 
     .svg {
         transform: scaleX(-1);
@@ -17,12 +19,12 @@
     }
 
     .path {
-        stroke-width: 8px;
+        stroke-width: 10px;
         stroke: lighten($bg-color, 5);
     }
 
     .path_remaining {
-        stroke-width: 8px;
+        stroke-width: 10px;
         stroke-linecap: round;
         transform: rotate(90deg);
         transform-origin: center;
@@ -98,7 +100,7 @@
         height: 80vw;
 
         div {
-            font-size: 14vw;
+            font-size: 13vw;
         }
     }
 
@@ -110,7 +112,7 @@
         margin-bottom: 20px;
 
         h2 {
-            font-size: 8vw;
+            font-size: 7vw;
         }
 
         input {

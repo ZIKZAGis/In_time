@@ -9,8 +9,6 @@ import {GiPlayButton} from 'react-icons/gi'
 import {BiReset} from 'react-icons/bi'
 import TimerRing from './TimerRing';
 
-
-
 const Timer = () => {
   const [timeLeft, setTimeLeft] = useState(0)
   const [isCounting, setIsCounting] = useState(false)
@@ -54,7 +52,7 @@ const Timer = () => {
     <div className='wrapper'>
       <Header name={`Timer`} icon={<CgSandClock style={isCounting && {color: '#ff5b00'}}/>}/>
       <div className='wrapper'>
-        <TimerRing style={styles} timeLeft={timeLeft} timeLimit={timeLimit}>
+        <TimerRing style={styles} timeLeft={timeLeft} timeLimit={timeLimit} isCounting={isCounting}>
           <div>
             <span>{hours}</span>
             <span>:</span>

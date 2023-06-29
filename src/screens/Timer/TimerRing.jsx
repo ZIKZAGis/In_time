@@ -1,4 +1,4 @@
-const TimerRing = ({children, style, timeLeft, timeLimit}) => {
+const TimerRing = ({children, style, timeLeft, timeLimit, isCounting}) => {
     const PATH_LENGTH = 283
     const COLORS = {
         info: {
@@ -35,13 +35,12 @@ const TimerRing = ({children, style, timeLeft, timeLimit}) => {
     }
 
     return (
-        <div className={style.timer}>
+        <div className={style.timer} style={{backgroundColor: `${isCounting ? '#151515' : '#202020'}`}}>
             <svg className={style.svg} viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <g className={style.circle}>
                     <circle className={style.path} cx="50" cy="50" r="45"/>
                     <path
                         id="base-timer-path-remaining"
-                        stroke-dasharray="283"
                         className={style.path_remaining}
                         style={{
                             strokeDasharray: `${Math.floor(calculateTimeFraction())} ${timeLeft > 0 ? PATH_LENGTH : 0}`,
