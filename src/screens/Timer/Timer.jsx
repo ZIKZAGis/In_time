@@ -21,6 +21,7 @@ const Timer = () => {
   const hours = getPadTime(Math.floor(timeLeft / 60 / 60))
   const minutes = getPadTime(Math.floor((timeLeft - (hours * 60 * 60)) / 60))
   const seconds = getPadTime((timeLeft - minutes * 60) - (hours * 60 * 60))
+  const timeLimit = (hour * 60 * 60) + (min * 60) + +sec
 
 
   useEffect(() => {
@@ -35,8 +36,8 @@ const Timer = () => {
   }, [timeLeft, isCounting])
 
   useEffect(() => {
-    return setTimeLeft(((hour * 60 * 60) + (min * 60) + +sec) <= 359999 ? ((hour * 60 * 60) + (min * 60) + +sec) : 359999)
-  }, [hour, min, sec])
+    return setTimeLeft((timeLimit) <= 359999 ? (timeLimit) : 359999)
+  }, [timeLimit])
 
   const handleStart = () => {
     setIsCounting(true)
@@ -46,14 +47,14 @@ const Timer = () => {
   }
   const handleReset = () => {
     setIsCounting(false)
-    setTimeLeft(((hour * 60 * 60) + (min * 60) + +sec) <= 359999 ? ((hour * 60 * 60) + (min * 60) + +sec) : 359999)
+    setTimeLeft(timeLimit <= 359999 ? timeLimit : 359999)
   }
 
   return (
     <div className='wrapper'>
       <Header name={`Timer`} icon={<CgSandClock style={isCounting && {color: '#ff5b00'}}/>}/>
       <div className='wrapper'>
-        <TimerRing style={styles}>
+        <TimerRing style={styles} timeLeft={timeLeft} timeLimit={timeLimit}>
           <div>
             <span>{hours}</span>
             <span>:</span>
@@ -76,7 +77,7 @@ const Timer = () => {
           ) : (
             <Button onClick={handleStart} value={<GiPlayButton/>} disabled={timeLeft > 0 ? false : true}/>
           )}
-          <Button onClick={handleReset} value={<BiReset/>} disabled={timeLeft > 0 ? false : true}/>
+          <Button onClick={handleReset} value={<BiReset/>} disabled={timeLimit > 0 ? false : true}/>
         </div>
       </div>
     </div>

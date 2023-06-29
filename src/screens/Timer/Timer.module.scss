@@ -8,7 +8,7 @@
 
 
     .svg {
-
+        transform: scaleX(-1);
     }
 
     .circle {
@@ -18,7 +18,15 @@
 
     .path {
         stroke-width: 8px;
-        stroke: gray;
+        stroke: lighten($bg-color, 5);
+    }
+
+    .path_remaining {
+        stroke-width: 8px;
+        stroke-linecap: round;
+        transform: rotate(90deg);
+        transform-origin: center;
+        transition: 1s linear all;
     }
 
     div {
