@@ -1,5 +1,15 @@
 @import 'src/variables.scss';
 
+.wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    max-width: 1024px;
+    margin: 0 auto;
+    height: 100%;
+}
+
 .time {
     font-size: 45px;
     font-weight: bold;
@@ -30,13 +40,11 @@
 }
 
 .result {
-    display: flex;
-    flex-direction: column;
     font-size: 20px;
     padding: 10px;
     overflow-y: scroll;
     word-wrap: break-word;
-    height: 130px;
+    height: 15vh;
     margin-bottom: 10px;
 
     &::before {

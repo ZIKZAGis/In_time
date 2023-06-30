@@ -51,7 +51,7 @@ const Timer = () => {
   return (
     <div className='wrapper'>
       <Header name={`Timer`} icon={<CgSandClock style={isCounting && {color: '#ff5b00'}}/>}/>
-      <div className='wrapper'>
+      <div className={styles.wrapper}>
         <TimerRing style={styles} timeLeft={timeLeft} timeLimit={timeLimit} isCounting={isCounting}>
           <div>
             <span>{hours}</span>
@@ -64,9 +64,9 @@ const Timer = () => {
         <div className={styles.setting}>
           <h2>Enter time</h2>
           <div>
-            <input type="number" name="hours" id="hours" placeholder='hour' onChange={(e) => setHour(e.target.value)} disabled={isCounting ? true : false}/>
-            <input type="number" name="minutes" id="minutes" placeholder='min' onChange={(e) => setMin(e.target.value)} disabled={isCounting ? true : false}/>
-            <input type="number" name="seconds" id="seconds" placeholder='sec' onChange={(e) => setSec(e.target.value)} disabled={isCounting ? true : false}/>
+            <input type="number" name="hours" id="hours" placeholder='H' onChange={(e) => setHour(e.target.value)} disabled={isCounting ? true : false}/>
+            <input type="number" name="minutes" id="minutes" placeholder='M' onChange={(e) => setMin(e.target.value)} disabled={isCounting ? true : false}/>
+            <input type="number" name="seconds" id="seconds" placeholder='S' onChange={(e) => setSec(e.target.value)} disabled={isCounting ? true : false}/>
           </div>
         </div>
         <div className={styles.control}>
