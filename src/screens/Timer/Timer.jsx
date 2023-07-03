@@ -51,7 +51,7 @@ const Timer = () => {
   return (
     <div className='wrapper'>
       <Header name={`Timer`} icon={<CgSandClock style={isCounting && {color: '#ff5b00'}}/>}/>
-      <div className={styles.wrapper}>
+      <div className='inner_wrapper'>
         <TimerRing style={styles} timeLeft={timeLeft} timeLimit={timeLimit} isCounting={isCounting}>
           <div>
             <span>{hours}</span>

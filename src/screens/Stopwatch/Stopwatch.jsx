@@ -70,7 +70,7 @@ const Stopwatch = () => {
   return (
     <div className='wrapper'>
       <Header name={`Stopwatch`} icon={<ImStopwatch style={isCounting && {color: '#ff5b00'}}/>}/>
-      <div className={styles.wrapper}>
+      <div className='inner_wrapper'>
         <div className={styles.time} style={{borderColor: `${isLaunched ? '#5ad006' : '#ff5b00'}`}}>
           <span>{hours}</span>
           <span>:</span>

@@ -100,8 +100,6 @@ const Clock = () => {
     <div className='wrapper'>
       <Header name={`Clock`} icon={<FiClock/>}/>
       <div className={styles.slider} id='slider'>
-
-
         <div className={`${styles.ru_clock} ${styles.slider_item}`} style={{opacity: '1'}}>
           <div className={styles.season} style={{color: `${seasonColors[getSeason()]}`}}>
             <span>
@@ -123,8 +121,6 @@ const Clock = () => {
             </div>
           </div>
         </div>
-
-
         <div className={`${styles.en_clock} ${styles.slider_item}`}>
           <div className={styles.season}>{titles.en.season[getSeason()]}</div>
           <div className={styles.time}>

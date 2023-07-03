@@ -25,3 +25,13 @@ code {
   margin: 0 auto;
   height: 100%;
 }
+
+.inner_wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  max-width: 1024px;
+  margin: 0 auto;
+  height: 100%;
+}

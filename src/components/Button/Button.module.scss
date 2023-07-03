@@ -13,6 +13,7 @@
     transition: $animation;
 
     &:hover {
+        color: $accent;
         background-color: darken($bg-color, 5);
         box-shadow: $shadow-hover
     }
@@ -22,6 +23,7 @@
     }
 
     &:disabled:hover {
+        color: $text-color;
         background-color: initial;
         box-shadow: initial;
     }

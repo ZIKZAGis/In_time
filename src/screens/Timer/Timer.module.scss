@@ -1,15 +1,5 @@
 @import 'src/variables.scss';
 
-.wrapper {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    max-width: 1024px;
-    margin: 0 auto;
-    height: 100%;
-  }
-
 .timer {
     position: relative;
     width: 400px;
