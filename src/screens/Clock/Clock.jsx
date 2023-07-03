@@ -43,7 +43,7 @@ const Clock = () => {
   }, 1000)
 
   const year = time.getFullYear()
-  const date = getPadTime(time.getDate())
+  const date = time.getDate()
   const month = time.getMonth()
   const day = time.getDay() 
   const h = getPadTime(time.getHours())
@@ -52,21 +52,14 @@ const Clock = () => {
 
   const getSeason = () => {
     let season;
-  
-    switch(month) {
-      case 0 || 1:
-        season = 0
-        break
-      case 2 || 3 || 4:
-        season = 1
-        break
-      case 5 || 6 || 7:
-        season = 2
-        break
-      case 11:
-        season = 0
-        break
-      default: 
+
+    if (month <= 1 || month === 11) {
+      season = 0
+    } else if (month >= 2 && month <= 4) {
+      season = 1
+    } else if (month >= 5 && month <= 7) {
+      season = 2
+    } else {
       season = 3
     }
 
@@ -144,7 +137,7 @@ const Clock = () => {
         <div className={`${styles.default_clock} ${styles.slider_item}`}>
           <span>{h}</span>
           <div className={styles.default_date}>
-            {`${date}.${getPadTime(month + 1)}.${year}`}
+            {`${getPadTime(date)}.${getPadTime(month + 1)}.${year}`}
           </div>
           <span>{m}</span>
         </div>

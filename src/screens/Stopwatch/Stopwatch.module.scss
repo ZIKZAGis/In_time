@@ -23,7 +23,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 0 auto 20px;
+    margin: 0 auto 15px;
     text-shadow: 3px 3px 5px black;
     background-color: darken($bg-color, 3);
     transition: $animation;
@@ -33,6 +33,7 @@
     position: relative;
 
     span {
+        display: block;
         font-weight: bold;
         color: lighten($bg-color, 15);
         margin-bottom: 10px;
@@ -41,7 +42,6 @@
 
 .result {
     font-size: 20px;
-    padding: 10px;
     overflow-y: scroll;
     word-wrap: break-word;
     height: 15vh;
