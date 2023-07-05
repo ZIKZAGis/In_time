@@ -2,7 +2,7 @@
 
 .time {
     position: relative;
-    border: 2px solid $accent;
+    border: 4px solid $accent;
     border-radius: 10px;
     background-color: darken($bg-color, 6);
     box-shadow: $shadow;
@@ -29,9 +29,17 @@
         padding: 10px;
         cursor: pointer;
         margin: 0 10px;
+        transition: $animation;
+
+        &:hover {
+            background-color: lighten($accent, 6);
+            color: darken($bg-color, 9);
+        }
 
         &:disabled {
             opacity: 0.5;
+            background-color: $accent;
+            color: $bg-color;
         }
     }
 }
@@ -148,5 +156,28 @@
         font-size: 5vw;
         left: 50%;
         transform: translateX(-50%);
+        animation: name duration timing-function delay iteration-count direction fill-mode;
+    }
+}
+
+.ringing {
+    animation: alarm 1s infinite
+  }
+  
+@keyframes alarm {
+    0% {
+        color: $text-color;
+        text-shadow: none;
+        border-color: $accent;
+    }
+    50% {
+        color: red;
+        text-shadow: 0 0 5px red;
+        border-color: red;
+    }
+
+    100% {
+        color: $text-color;
+        border-color: $accent;
     }
 }

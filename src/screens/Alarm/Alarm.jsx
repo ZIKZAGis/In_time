@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Header from '../../components/header/Header';
 import styles from './Alarm.module.scss'
 import {MdAlarmOn} from 'react-icons/md'
@@ -9,6 +9,7 @@ const Alarm = () => {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString('ru-RU'))
   const [alarm, setAlarm] = useState('')
   const [isAlarmOpen, setIsAlarmOpen] = useState(false)
+  const [isTimeIsOut, setIsTimeIsOut] = useState(false)
 
 
   const [hour, setHour] = useState(0)
@@ -20,25 +21,37 @@ const Alarm = () => {
     setCurrentTime(new Date().toLocaleTimeString('ru-RU'))
   }, 1000)
 
-  if ((alarm + ':01') === currentTime) {
-    alert('time is out!')
-  }
+  useEffect(() => {
+    if ((alarm + ':00') === currentTime) {
+      setIsTimeIsOut(true)
+    }
+  },[currentTime, alarm])
+
 
   const setTimeAlarm = () => {
     setAlarm(`${getPadTime(hour)}:${getPadTime(minute)}`)
+  }
+
+  const stopAlarm = () => {
+    setIsTimeIsOut(false)
+  }
+
+  const offAlarm = () => {
+    setAlarm('')
+    setIsTimeIsOut(false)
   }
 
   return (
     <div className='wrapper'>
       <Header name={`Alarm`} icon={<MdAlarmOn style={alarm && {color: '#ff5b00'}}/>}/>
       <div className='inner_wrapper'>
-        <div className={styles.time}>
+        <div className={`${styles.time} ${isTimeIsOut && styles.ringing}`}>
           {currentTime}
           {alarm && 
             <div className={styles.alarm_info}>The alarm will go off at <span>{alarm}</span></div>
           }
           <div className={styles.alarm_buttons}>
-            <button type='button' onClick={() => setAlarm('')} disabled={alarm ? false : true}>Off alarm</button>
+            <button type='button' onClick={stopAlarm} disabled={isTimeIsOut ? false : true}>Stop alarm</button>
             <button type='button' onClick={setAlarmState}>{isAlarmOpen? 'Close' : 'Set alarm'}</button>
           </div>
         </div>
@@ -46,7 +59,8 @@ const Alarm = () => {
           <div className={styles.alarm_input}>
             <InputNumber name={'hours'} placeHolder={'H'} maxVal={23} setTime={setHour}/>
             <InputNumber name={'minutes'} placeHolder={'M'} maxVal={59} setTime={setMinute}/>
-            <button type='button' onClick={setTimeAlarm} disabled={(hour >= 0 && minute >= 0) ? false : true}>Set <MdAlarmOn/></button>         
+            <button type='button' onClick={setTimeAlarm}>Set <MdAlarmOn/></button>
+            <button type='button' onClick={offAlarm} disabled={alarm ? false : true}>Off <MdAlarmOn/></button>         
           </div>
         </form>
       </div>
