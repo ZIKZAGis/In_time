@@ -3,7 +3,8 @@
 .slider {
     position: relative;
     width: 100%;
-    height: 800px;
+    height: 70%;
+    min-height: 500px;
     overflow: hidden;
 }
 
@@ -11,10 +12,9 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     opacity: 0;
     transition: $animation;
 }
@@ -65,6 +65,9 @@
 }
 
 .en_clock {
+    height: 100%;
+    justify-content: space-around;
+
     .season,
     .date {
         text-transform: uppercase;
@@ -72,7 +75,6 @@
         font-weight: bold;
         color: $text-color;
         text-shadow: 2px 2px 2px $accent;
-        padding: 60px 150px;
         line-height: 26px;
     }
 
@@ -147,11 +149,9 @@
     }
 }
 
-@media (max-width: $adaptive) {
-    .slider {
-        height: 80vh;
-    }
 
+
+@media (max-width: $adaptive) {
     .slider_item {
         justify-content: center;
     }
@@ -191,33 +191,10 @@
         .time {
             font-size: 28vw;
             margin-right: 0;
+            text-shadow: 0.7vw 0.7vw 3px $accent;
 
             span {
                 font-size: 8vw;
-            }
-        }
-    }
-}
-
-@media (max-width: 920px) {
-    .ru_clock {
-        .time {
-            font-size: 20vw;
-            line-height: 20vw;
-        }
-    }
-
-    .en_clock {
-        .season, .date {
-            padding: 20px 0;
-        }
-
-        .time {
-            font-size: 25vw;
-            margin-right: 0;
-
-            span {
-                font-size: 7vw;
             }
         }
     }

@@ -1,0 +1,45 @@
+@import 'src/variables.scss';
+
+.input {
+    border: none;
+    border-radius: 10px;
+    color: $text-color;
+    background-color: darken($bg-color, 3);
+    text-align: center;
+    font-weight: bold;
+    outline: none;
+    width: 60px;
+    height: 40px;
+    font-size: 26px;
+    margin: 0 10px;
+    padding: 5px 10px;
+    transition: $animation;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+
+    &:hover {
+        background-color: darken($bg-color, 6);
+    }
+
+    &:focus {
+        background-color: darken($bg-color, 8)
+    }
+
+    &:disabled {
+        opacity: 0.6;
+    }
+
+    &:disabled:hover {
+        background-color: darken($bg-color, 3)
+    }
+}
+
+@media (max-width: $adaptive) {
+    .input {
+        width: 20vw;
+        margin: 0 5px;
+    }
+}

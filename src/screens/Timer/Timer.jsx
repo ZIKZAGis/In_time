@@ -8,6 +8,7 @@ import {BsPauseFill} from 'react-icons/bs'
 import {GiPlayButton} from 'react-icons/gi'
 import {BiReset} from 'react-icons/bi'
 import TimerRing from './TimerRing';
+import InputNumber from '../../components/InputNumber/InputNumber';
 
 const Timer = () => {
   const [timeLeft, setTimeLeft] = useState(0)
@@ -34,7 +35,7 @@ const Timer = () => {
   }, [timeLeft, isCounting])
 
   useEffect(() => {
-    return setTimeLeft((timeLimit) <= 359999 ? (timeLimit) : 359999)
+    return setTimeLeft(timeLimit <= 359999 ? timeLimit : 359999)
   }, [timeLimit])
 
   const handleStart = () => {
@@ -64,9 +65,9 @@ const Timer = () => {
         <div className={styles.setting}>
           <h2>Enter time</h2>
           <div>
-            <input type="number" name="hours" id="hours" placeholder='H' onChange={(e) => setHour(e.target.value)} disabled={isCounting ? true : false}/>
-            <input type="number" name="minutes" id="minutes" placeholder='M' onChange={(e) => setMin(e.target.value)} disabled={isCounting ? true : false}/>
-            <input type="number" name="seconds" id="seconds" placeholder='S' onChange={(e) => setSec(e.target.value)} disabled={isCounting ? true : false}/>
+            <InputNumber name={'hours'} maxVal={99} placeHolder={'H'} setTime={setHour} isDisabled={isCounting}/>
+            <InputNumber name={'minutes'} maxVal={59} placeHolder={'M'} setTime={setMin} isDisabled={isCounting}/>
+            <InputNumber name={'seconds'} maxVal={59} placeHolder={'S'} setTime={setSec} isDisabled={isCounting}/>
           </div>
         </div>
         <div className={styles.control}>

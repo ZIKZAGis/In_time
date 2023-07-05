@@ -7,7 +7,6 @@ import {BsSnow2} from 'react-icons/bs'
 import {SiSpring} from 'react-icons/si'
 import {FaSun, FaCanadianMapleLeaf} from 'react-icons/fa'
 
-
 const titles = {
   ru: {
     day: ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'],
@@ -99,49 +98,51 @@ const Clock = () => {
   return (
     <div className='wrapper'>
       <Header name={`Clock`} icon={<FiClock/>}/>
-      <div className={styles.slider} id='slider'>
-        <div className={`${styles.ru_clock} ${styles.slider_item}`} style={{opacity: '1'}}>
-          <div className={styles.season} style={{color: `${seasonColors[getSeason()]}`}}>
-            <span>
-              {titles.ru.season[getSeason()]}
-            </span>
-            <div className={styles.icon}>
-              {seasonIcons[getSeason()]}    
+      <div className='inner_wrapper'>
+        <div className={styles.slider} id='slider'>
+          <div className={`${styles.ru_clock} ${styles.slider_item}`} style={{opacity: '1'}}>
+            <div className={styles.season} style={{color: `${seasonColors[getSeason()]}`}}>
+              <span>
+                {titles.ru.season[getSeason()]}
+              </span>
+              <div className={styles.icon}>
+                {seasonIcons[getSeason()]}    
+              </div>
+            </div>
+            <div className={styles.date}>
+              {`${date} ${titles.ru.month[month]}`}
+            </div>
+            <div className={styles.time}>
+              <span>
+                {titles.ru.day[day]} 
+              </span>
+              <div style={{color: `${seasonColors[getSeason()]}`}}>
+                {`${h}:${m}:${s}`}
+              </div>
             </div>
           </div>
-          <div className={styles.date}>
-            {`${date} ${titles.ru.month[month]}`}
-          </div>
-          <div className={styles.time}>
-            <span>
-              {titles.ru.day[day]} 
-            </span>
-            <div style={{color: `${seasonColors[getSeason()]}`}}>
-              {`${h}:${m}:${s}`}
+          <div className={`${styles.en_clock} ${styles.slider_item}`}>
+            <div className={styles.season}>{titles.en.season[getSeason()]}</div>
+            <div className={styles.time}>
+              {`${h}:${m}`}<span>:{s}</span>
+            </div>
+            <div className={styles.date}>
+              {`${titles.en.day[day]}, ${date} ${titles.en.month[month]}`}
             </div>
           </div>
-        </div>
-        <div className={`${styles.en_clock} ${styles.slider_item}`}>
-          <div className={styles.season}>{titles.en.season[getSeason()]}</div>
-          <div className={styles.time}>
-            {`${h}:${m}`}<span>:{s}</span>
-          </div>
-          <div className={styles.date}>
-            {`${titles.en.day[day]}, ${date} ${titles.en.month[month]}`}
+          <div className={`${styles.default_clock} ${styles.slider_item}`}>
+            <span>{h}</span>
+            <div className={styles.default_date}>
+              {`${getPadTime(date)}.${getPadTime(month + 1)}.${year}`}
+            </div>
+            <span>{m}</span>
           </div>
         </div>
-        <div className={`${styles.default_clock} ${styles.slider_item}`}>
-          <span>{h}</span>
-          <div className={styles.default_date}>
-            {`${getPadTime(date)}.${getPadTime(month + 1)}.${year}`}
-          </div>
-          <span>{m}</span>
+        <div className={styles.control} id='control'>
+          <button className={styles.button} onClick={setRuClock} style={{backgroundColor: '#ff5b00'}}/>
+          <button className={styles.button} onClick={setEnClock}/>
+          <button className={styles.button} onClick={setDfClock}/>
         </div>
-      </div>
-      <div className={styles.control} id='control'>
-        <button className={styles.button} onClick={setRuClock} style={{backgroundColor: '#ff5b00'}}/>
-        <button className={styles.button} onClick={setEnClock}/>
-        <button className={styles.button} onClick={setDfClock}/>
       </div>
     </div>
   );

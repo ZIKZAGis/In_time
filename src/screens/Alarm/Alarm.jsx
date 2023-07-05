@@ -3,6 +3,7 @@ import Header from '../../components/header/Header';
 import styles from './Alarm.module.scss'
 import {MdAlarmOn} from 'react-icons/md'
 import {getPadTime} from '../../utils/getPadTime'
+import InputNumber from '../../components/InputNumber/InputNumber';
 
 const Alarm = () => {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString('ru-RU'))
@@ -10,8 +11,8 @@ const Alarm = () => {
   const [isAlarmOpen, setIsAlarmOpen] = useState(false)
 
 
-  const [hour, setHour] = useState('')
-  const [minute, setMinute] = useState('')
+  const [hour, setHour] = useState(0)
+  const [minute, setMinute] = useState(0)
 
   const setAlarmState = () => setIsAlarmOpen(!isAlarmOpen)
 
@@ -24,7 +25,7 @@ const Alarm = () => {
   }
 
   const setTimeAlarm = () => {
-    hour && minute && setAlarm(`${getPadTime(hour)}:${getPadTime(minute)}`)
+    setAlarm(`${getPadTime(hour)}:${getPadTime(minute)}`)
   }
 
   return (
@@ -43,9 +44,9 @@ const Alarm = () => {
         </div>
         <form className={styles.alarm_form} style={isAlarmOpen ? {left: '0', opacity: '1'} : {left: '-100vw', opacity: '0'}}>
           <div className={styles.alarm_input}>
-            <input type="number" name="hours" id="hours" placeholder='H' min={0} max={23} onChange={(e) => setHour(e.target.value)}/>
-            <input type="number" name="minutes" id="minutes" placeholder='M' min={0} max={59} onChange={(e) => setMinute(e.target.value)}/>
-            <button type='button' onClick={setTimeAlarm} disabled={(hour && minute) ? false : true}>Set <MdAlarmOn/></button>         
+            <InputNumber name={'hours'} placeHolder={'H'} maxVal={23} setTime={setHour}/>
+            <InputNumber name={'minutes'} placeHolder={'M'} maxVal={59} setTime={setMinute}/>
+            <button type='button' onClick={setTimeAlarm} disabled={(hour >= 0 && minute >= 0) ? false : true}>Set <MdAlarmOn/></button>         
           </div>
         </form>
       </div>

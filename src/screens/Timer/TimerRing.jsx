@@ -9,13 +9,16 @@ const TimerRing = ({children, style, timeLeft, timeLimit, isCounting}) => {
         },
         alert: {
             color: 'red'
+        },
+        base: {
+            color: '#ff5b00'
         }
     }
 
     const getPathColor = () => {
-        const {alert, warning, info} = COLORS
+        const {alert, warning, info, base} = COLORS
         if (timeLimit === 0) {
-            return '#ff5b00'
+            return base.color
         }
 
         else if (timeLeft > 10) {
@@ -31,7 +34,10 @@ const TimerRing = ({children, style, timeLeft, timeLimit, isCounting}) => {
 
     const calculateTimeFraction = () => {
         const rawTime = timeLeft / timeLimit
-        return timeLeft > 0 ? (rawTime - (1 / timeLimit) * (1 - rawTime)) * PATH_LENGTH : 0
+        const pathStart = timeLeft > 0 ? PATH_LENGTH : 0
+        const pathEnd = timeLeft > 0 ? (rawTime - (1 / timeLimit) * (1 - rawTime)) * PATH_LENGTH : 0
+        const path = `${pathEnd} ${pathStart}`
+        return path
     }
 
     return (
@@ -43,8 +49,8 @@ const TimerRing = ({children, style, timeLeft, timeLimit, isCounting}) => {
                         id="base-timer-path-remaining"
                         className={style.path_remaining}
                         style={{
-                            strokeDasharray: `${Math.floor(calculateTimeFraction())} ${timeLeft > 0 ? PATH_LENGTH : 0}`,
-                            stroke: `${getPathColor()}`
+                            strokeDasharray: calculateTimeFraction(),
+                            stroke: getPathColor()
                         }}
                         d="
                         M 50, 50
