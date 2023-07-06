@@ -4,13 +4,15 @@ import styles from './Alarm.module.scss'
 import {MdAlarmOn} from 'react-icons/md'
 import {getPadTime} from '../../utils/getPadTime'
 import InputNumber from '../../components/InputNumber/InputNumber';
+import useSound from 'use-sound';
+import alarmSnd from '../../media/alarm.mp3'
 
 const Alarm = () => {
   const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString('ru-RU'))
   const [alarm, setAlarm] = useState('')
   const [isAlarmOpen, setIsAlarmOpen] = useState(false)
   const [isTimeIsOut, setIsTimeIsOut] = useState(false)
-
+  const [play, {stop}] = useSound(alarmSnd)
 
   const [hour, setHour] = useState(0)
   const [minute, setMinute] = useState(0)
@@ -24,8 +26,9 @@ const Alarm = () => {
   useEffect(() => {
     if ((alarm + ':00') === currentTime) {
       setIsTimeIsOut(true)
+      play()
     }
-  },[currentTime, alarm])
+  },[currentTime, alarm, play])
 
 
   const setTimeAlarm = () => {
@@ -34,11 +37,13 @@ const Alarm = () => {
 
   const stopAlarm = () => {
     setIsTimeIsOut(false)
+    stop()
   }
 
   const offAlarm = () => {
     setAlarm('')
     setIsTimeIsOut(false)
+    stop()
   }
 
   return (

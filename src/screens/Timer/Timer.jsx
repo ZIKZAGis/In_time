@@ -9,6 +9,8 @@ import {GiPlayButton} from 'react-icons/gi'
 import {BiReset} from 'react-icons/bi'
 import TimerRing from './TimerRing';
 import InputNumber from '../../components/InputNumber/InputNumber';
+import useSound from 'use-sound';
+import endSnd from '../../media/time_is_over.mp3'
 
 const Timer = () => {
   const [timeLeft, setTimeLeft] = useState(0)
@@ -16,6 +18,7 @@ const Timer = () => {
   const [hour, setHour] = useState('')
   const [min, setMin] = useState('')
   const [sec, setSec] = useState('')
+  const [play] = useSound(endSnd)
 
   const hours = getPadTime(Math.floor(timeLeft / 60 / 60))
   const minutes = getPadTime(Math.floor((timeLeft - (hours * 60 * 60)) / 60))
@@ -30,13 +33,18 @@ const Timer = () => {
 
     if (timeLeft === 0) setIsCounting(false)
 
-    return () => clearInterval(interval)
+    isCounting && timeLeft === 0 && play()
 
-  }, [timeLeft, isCounting])
+    return () => {
+      clearInterval(interval)
+    }
+
+  }, [timeLeft, isCounting,  play])
 
   useEffect(() => {
     return setTimeLeft(timeLimit <= 359999 ? timeLimit : 359999)
   }, [timeLimit])
+
 
   const handleStart = () => {
     setIsCounting(true)

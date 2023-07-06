@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react'
 import styles from './InputNumber.module.scss'
-import { getPadTime } from '../../utils/getPadTime'
 
 const InputNumber = ({name, maxVal, placeHolder, isDisabled = false, setTime}) => {
     const [val, setVal] = useState('')
@@ -8,7 +7,7 @@ const InputNumber = ({name, maxVal, placeHolder, isDisabled = false, setTime}) =
     const setNumber = useCallback(({target}) => {
         let {value, min, max} = target
         value = Math.max(Number(min), Math.min(Number(max), Number(value)))
-        setVal(getPadTime(value))
+        setVal(value)
         setTime(value)
     }, [setTime])
 
